@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ernest Anyona | Full Stack Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+	*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+	:root {
+		--navy: #0B1C2C;
+		--navy-mid: #122337;
+		--navy-light: #1A3A55;
+		--gold: #C9A84C;
+		--gold-light: #E8C97A;
+		--cream: #F7F4EE;
+		--cream-dark: #EDE8DC;
+		--text-main: #0B1C2C;
+		--text-muted: #5A6A7A;
+		--white: #FFFFFF;
+	}
+
+	html { scroll-behavior: smooth; }
+
+	body {
+		font-family: 'DM Sans', sans-serif;
+		background: var(--cream);
+		color: var(--text-main);
+		overflow-x: hidden;
+	}
+
+	/* NAV */
+	nav {
+		position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+		background: var(--navy);
+		display: flex; align-items: center; justify-content: space-between;
+		padding: 1.2rem 5%;
+		border-bottom: 1px solid var(--navy-light);
+	}
+	.nav-logo {
+		font-family: 'DM Serif Display', serif;
+		font-size: 1.5rem;
+		color: var(--gold);
+		letter-spacing: 0.02em;
+	}
+	.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+	.nav-links a {
+		text-decoration: none;
+		color: rgba(255,255,255,0.7);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		transition: color 0.2s;
+	}
+	.nav-links a:hover { color: var(--gold); }
+
+	/* HERO */
+	.hero {
+		min-height: 100vh;
+		background: var(--navy);
+		display: flex; align-items: center;
+		padding: 0 5%;
+		position: relative;
+		overflow: hidden;
+	}
+	.hero::before {
+		content: '';
+		position: absolute; top: -200px; right: -200px;
+		width: 600px; height: 600px;
+		border-radius: 50%;
+		border: 1px solid rgba(201,168,76,0.12);
+	}
+	.hero::after {
+		content: '';
+		position: absolute; bottom: -150px; right: 100px;
+		width: 400px; height: 400px;
+		border-radius: 50%;
+		border: 1px solid rgba(201,168,76,0.07);
+	}
+	.hero-content { max-width: 680px; position: relative; z-index: 1; }
+	.hero-eyebrow {
+		display: inline-block;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--gold);
+		margin-bottom: 1.5rem;
+		padding: 0.4rem 1rem;
+		border: 1px solid rgba(201,168,76,0.35);
+		border-radius: 2px;
+	}
+	.hero h1 {
+		font-family: 'DM Serif Display', serif;
+		font-size: clamp(3rem, 6vw, 5.5rem);
+		color: var(--white);
+		line-height: 1.05;
+		margin-bottom: 1.5rem;
+	}
+	.hero h1 em {
+		font-style: italic;
+		color: var(--gold);
+	}
+	.hero-desc {
+		font-size: 1.1rem;
+		color: rgba(255,255,255,0.65);
+		line-height: 1.8;
+		max-width: 520px;
+		margin-bottom: 2.5rem;
+	}
+	.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+	.btn-primary {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: var(--gold);
+		color: var(--navy);
+		font-weight: 600;
+		font-size: 0.875rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-radius: 2px;
+		transition: background 0.2s, transform 0.15s;
+	}
+	.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+	.btn-outline {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		border: 1px solid rgba(255,255,255,0.3);
+		color: rgba(255,255,255,0.85);
+		font-weight: 500;
+		font-size: 0.875rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-radius: 2px;
+		transition: border-color 0.2s, color 0.2s;
+	}
+	.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+	/* SECTIONS */
+	section { padding: 6rem 5%; }
+	.section-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--gold);
+		margin-bottom: 0.75rem;
+	}
+	.section-title {
+		font-family: 'DM Serif Display', serif;
+		font-size: clamp(2rem, 4vw, 3rem);
+		color: var(--navy);
+		line-height: 1.15;
+		margin-bottom: 1rem;
+	}
+	.section-divider {
+		width: 48px; height: 3px;
+		background: var(--gold);
+		margin-bottom: 2.5rem;
+		border-radius: 2px;
+	}
+
+	/* ABOUT */
+	#about { background: var(--white); }
+	.about-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5rem;
+		align-items: center;
+		max-width: 1100px;
+	}
+	.about-text p {
+		font-size: 1.05rem;
+		color: var(--text-muted);
+		line-height: 1.9;
+		margin-bottom: 1.2rem;
+	}
+	.about-stat-row {
+		display: flex; gap: 2.5rem; margin-top: 2rem;
+	}
+	.about-stat .number {
+		font-family: 'DM Serif Display', serif;
+		font-size: 2.5rem;
+		color: var(--navy);
+	}
+	.about-stat .label {
+		font-size: 0.8rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		margin-top: 0.2rem;
+	}
+	.about-card {
+		background: var(--navy);
+		border-radius: 4px;
+		padding: 3rem 2.5rem;
+		position: relative;
+		overflow: hidden;
+	}
+	.about-card::before {
+		content: '';
+		position: absolute; top: 0; left: 0; right: 0; height: 3px;
+		background: var(--gold);
+	}
+	.about-card .initials {
+		width: 72px; height: 72px; border-radius: 50%;
+		background: rgba(201,168,76,0.15);
+		border: 2px solid rgba(201,168,76,0.4);
+		display: flex; align-items: center; justify-content: center;
+		font-family: 'DM Serif Display', serif;
+		font-size: 1.5rem;
+		color: var(--gold);
+		margin-bottom: 1.5rem;
+	}
+	.about-card h3 {
+		font-family: 'DM Serif Display', serif;
+		font-size: 1.5rem;
+		color: var(--white);
+		margin-bottom: 0.4rem;
+	}
+	.about-card .role {
+		font-size: 0.85rem;
+		color: var(--gold);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		margin-bottom: 1.5rem;
+	}
+	.about-card .detail {
+		display: flex; align-items: center; gap: 0.75rem;
+		font-size: 0.9rem;
+		color: rgba(255,255,255,0.6);
+		margin-bottom: 0.75rem;
+	}
+	.about-card .detail span { color: rgba(255,255,255,0.85); }
+
+	/* SKILLS */
+	#skills { background: var(--cream); }
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1.5rem;
+		max-width: 1100px;
+	}
+	.skill-card {
+		background: var(--white);
+		border-radius: 4px;
+		padding: 1.75rem;
+		border-top: 3px solid var(--gold);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11,28,44,0.1); }
+	.skill-card-icon {
+		width: 44px; height: 44px;
+		background: rgba(11,28,44,0.06);
+		border-radius: 3px;
+		display: flex; align-items: center; justify-content: center;
+		font-size: 1.4rem;
+		margin-bottom: 1rem;
+	}
+	.skill-card h4 {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--navy);
+		margin-bottom: 0.5rem;
+		letter-spacing: 0.02em;
+	}
+	.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+	.skill-tag {
+		font-size: 0.75rem;
+		font-weight: 500;
+		padding: 0.3rem 0.7rem;
+		background: rgba(11,28,44,0.06);
+		color: var(--navy);
+		border-radius: 2px;
+		letter-spacing: 0.03em;
+	}
+
+	/* PROJECTS */
+	#projects { background: var(--white); }
+	.project-card {
+		max-width: 1100px;
+		background: var(--navy);
+		border-radius: 4px;
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.project-info { padding: 3.5rem; }
+	.project-tag {
+		display: inline-block;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--gold);
+		border: 1px solid rgba(201,168,76,0.4);
+		padding: 0.3rem 0.75rem;
+		border-radius: 2px;
+		margin-bottom: 1.5rem;
+	}
+	.project-info h3 {
+		font-family: 'DM Serif Display', serif;
+		font-size: 2rem;
+		color: var(--white);
+		line-height: 1.2;
+		margin-bottom: 1.25rem;
+	}
+	.project-info p {
+		font-size: 0.975rem;
+		color: rgba(255,255,255,0.6);
+		line-height: 1.85;
+		margin-bottom: 2rem;
+	}
+	.project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+	.project-tech span {
+		font-size: 0.78rem;
+		font-weight: 600;
+		padding: 0.35rem 0.8rem;
+		background: rgba(201,168,76,0.12);
+		color: var(--gold-light);
+		border-radius: 2px;
+		letter-spacing: 0.04em;
+	}
+	.project-link {
+		display: inline-flex; align-items: center; gap: 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--gold);
+		text-decoration: none;
+		transition: gap 0.2s;
+	}
+	.project-link:hover { gap: 0.8rem; }
+	.project-visual {
+		background: var(--navy-light);
+		display: flex; align-items: center; justify-content: center;
+		padding: 3rem;
+		position: relative;
+		overflow: hidden;
+	}
+	.project-visual::before {
+		content: '';
+		position: absolute; inset: 0;
+		background: repeating-linear-gradient(
+			45deg,
+			transparent,
+			transparent 20px,
+			rgba(201,168,76,0.04) 20px,
+			rgba(201,168,76,0.04) 21px
+		);
+	}
+	.project-visual-icon {
+		width: 120px; height: 120px;
+		border-radius: 50%;
+		background: rgba(201,168,76,0.1);
+		border: 2px solid rgba(201,168,76,0.25);
+		display: flex; align-items: center; justify-content: center;
+		font-size: 3.5rem;
+		position: relative; z-index: 1;
+	}
+
+	/* CONTACT */
+	#contact { background: var(--navy); text-align: center; }
+	#contact .section-label { color: var(--gold); }
+	#contact .section-title { color: var(--white); }
+	#contact p {
+		font-size: 1.05rem;
+		color: rgba(255,255,255,0.6);
+		max-width: 480px;
+		margin: 0 auto 2.5rem;
+		line-height: 1.8;
+	}
+	.contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+	.contact-link {
+		display: inline-flex; align-items: center; gap: 0.5rem;
+		padding: 0.9rem 1.75rem;
+		border: 1px solid rgba(255,255,255,0.2);
+		color: rgba(255,255,255,0.8);
+		text-decoration: none;
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		border-radius: 2px;
+		transition: border-color 0.2s, color 0.2s;
+	}
+	.contact-link:hover { border-color: var(--gold); color: var(--gold); }
+	.contact-link.primary {
+		background: var(--gold);
+		border-color: var(--gold);
+		color: var(--navy);
+		font-weight: 600;
+	}
+	.contact-link.primary:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy); }
+
+	/* FOOTER */
+	footer {
+		background: #071018;
+		text-align: center;
+		padding: 2rem;
+		font-size: 0.8rem;
+		color: rgba(255,255,255,0.3);
+		letter-spacing: 0.06em;
+	}
+
+	/* RESPONSIVE */
+	@media (max-width: 768px) {
+		.about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+		.project-card { grid-template-columns: 1fr; }
+		.project-visual { display: none; }
+		.nav-links { gap: 1.25rem; }
+		.about-stat-row { gap: 1.5rem; }
+	}
+
+	/* SCROLL ANIMATIONS */
+	.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+	.reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+	<div class="nav-logo">EA</div>
+	<ul class="nav-links">
+		<li><a href="#about">About</a></li>
+		<li><a href="#skills">Skills</a></li>
+		<li><a href="#projects">Projects</a></li>
+		<li><a href="#contact">Contact</a></li>
+	</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+	<div class="hero-content">
+		<div class="hero-eyebrow">Full Stack Software Engineer</div>
+		<h1>Ernest<br/><em>Anyona.</em></h1>
+		<p class="hero-desc">
+			Software engineer, passionate about building robust, scalable web applications from front to back. Turning ideas into digital reality with clean code and thoughtful design.
+		</p>
+		<div class="hero-actions">
+			<a href="#projects" class="btn-primary">View My Work</a>
+			<a href="#contact" class="btn-outline">Get In Touch</a>
+		</div>
+	</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+	<div class="about-grid reveal">
+		<div class="about-text">
+			<p class="section-label">About Me</p>
+			<h2 class="section-title">Building the web, <em style="font-style:italic; color: var(--navy);">end to end.</em></h2>
+			<div class="section-divider"></div>
+			<p>
+				I'm Ernest Anyona, a freshly graduated Full Stack Software Engineer from Murang'a University of Technology. My passion lies in crafting seamless digital experiences — from pixel-perfect interfaces to robust server-side architecture.
+			</p>
+			<p>
+				I thrive at the intersection of design and engineering, delivering products that are both performant and intuitive. Whether it's a sleek React frontend or a powerful Django REST API, I bring ideas to life with precision and care.
+			</p>
+			<div class="about-stat-row">
+				<div class="about-stat">
+					<div class="number">2+</div>
+					<div class="label">Years Coding</div>
+				</div>
+				<div class="about-stat">
+					<div class="number">5+</div>
+					<div class="label">Technologies</div>
+				</div>
+				<div class="about-stat">
+					<div class="number">1</div>
+					<div class="label">Degree Earned</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-card">
+			<div class="initials">EA</div>
+			<h3>Ernest Anyona</h3>
+			<div class="role">Full Stack Engineer</div>
+			<div class="detail">🎓 <span>Murang'a University of Technology</span></div>
+			<div class="detail">📍 <span>Kenya</span></div>
+			<div class="detail">💼 <span>Open to Opportunities</span></div>
+			<div class="detail">⚡ <span>JavaScript · Python · React</span></div>
+		</div>
+	</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+	<p class="section-label reveal">Technical Skills</p>
+	<h2 class="section-title reveal">My tech stack</h2>
+	<div class="section-divider reveal"></div>
+	<div class="skills-grid reveal">
+
+		<div class="skill-card">
+			<div class="skill-card-icon">⚛️</div>
+			<h4>Frontend Development</h4>
+			<p style="font-size:0.875rem; color: var(--text-muted); line-height:1.7;">Building responsive, dynamic user interfaces that delight users.</p>
+			<div class="skill-tags">
+				<span class="skill-tag">React</span>
+				<span class="skill-tag">JavaScript</span>
+				<span class="skill-tag">HTML5</span>
+				<span class="skill-tag">CSS3</span>
+			</div>
+		</div>
+
+		<div class="skill-card">
+			<div class="skill-card-icon">🔧</div>
+			<h4>Backend Development</h4>
+			<p style="font-size:0.875rem; color: var(--text-muted); line-height:1.7;">Crafting scalable APIs and server-side logic with modern frameworks.</p>
+			<div class="skill-tags">
+				<span class="skill-tag">Node.js</span>
+				<span class="skill-tag">Django</span>
+				<span class="skill-tag">Python</span>
+				<span class="skill-tag">REST APIs</span>
+			</div>
+		</div>
+
+		<div class="skill-card">
+			<div class="skill-card-icon">🗄️</div>
+			<h4>Database & Tools</h4>
+			<p style="font-size:0.875rem; color: var(--text-muted); line-height:1.7;">Managing data efficiently and collaborating with professional tooling.</p>
+			<div class="skill-tags">
+				<span class="skill-tag">SQL</span>
+				<span class="skill-tag">Git</span>
+				<span class="skill-tag">GitHub</span>
+				<span class="skill-tag">Postman</span>
+			</div>
+		</div>
+
+		<div class="skill-card">
+			<div class="skill-card-icon">🌐</div>
+			<h4>Full Stack Integration</h4>
+			<p style="font-size:0.875rem; color: var(--text-muted); line-height:1.7;">Connecting the dots between client and server for seamless experiences.</p>
+			<div class="skill-tags">
+				<span class="skill-tag">Express.js</span>
+				<span class="skill-tag">React + Django</span>
+				<span class="skill-tag">Auth & JWT</span>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+	<p class="section-label reveal">Featured Work</p>
+	<h2 class="section-title reveal">Projects</h2>
+	<div class="section-divider reveal"></div>
+
+	<div class="project-card reveal">
+		<div class="project-info">
+			<div class="project-tag">Civic Tech · Full Stack</div>
+			<h3>Urban Infrastructure Issue Reporting Platform</h3>
+			<p>
+				A full stack platform empowering citizens to report urban infrastructure problems — potholes, broken streetlights, water leaks — directly to local authorities. Features real-time status tracking, geolocation tagging, and an admin dashboard for issue management and resolution workflows.
+			</p>
+			<div class="project-tech">
+				<span>React</span>
+				<span>Django</span>
+				<span>Python</span>
+				<span>Node.js</span>
+				<span>REST API</span>
+				<span>JavaScript</span>
+			</div>
+			<a href="#contact" class="project-link">Request Demo →</a>
+		</div>
+		<div class="project-visual">
+			<div class="project-visual-icon">🏙️</div>
+		</div>
+	</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+	<p class="section-label">Get In Touch</p>
+	<h2 class="section-title" style="color: var(--white);">Let's work together</h2>
+	<div class="section-divider" style="margin: 1rem auto 1.5rem;"></div>
+	<p>
+		I'm currently open to full-time roles, freelance projects, and exciting collaborations. If you have a project in mind or just want to connect, my inbox is always open.
+	</p>
+	<div class="contact-links">
+		<a href="mailto:ernest.anyona@email.com" class="contact-link primary">✉ Send an Email</a>
+		<a href="https://github.com/Anyoner2" target="_blank" class="contact-link">⌥ GitHub</a>
+		<a href="https://www.linkedin.com/in/ernest-anyona-4398b7267/" target="_blank" class="contact-link">in LinkedIn</a>
+	</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+	© 2025 Ernest Anyona · Full Stack Software Engineer · Built with passion
+</footer>
+
+<script>
+	const reveals = document.querySelectorAll('.reveal');
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+	}, { threshold: 0.12 });
+	reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
