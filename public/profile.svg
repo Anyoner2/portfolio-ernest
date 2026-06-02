@@ -1,11 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#112239"/>
-      <stop offset="100%" stop-color="#1e4268"/>
+      <stop offset="0%" stop-color="#0B1C2C"/>
+      <stop offset="100%" stop-color="#1A3A55"/>
     </linearGradient>
   </defs>
   <rect width="240" height="240" rx="32" fill="url(#bg)"/>
-  <circle cx="120" cy="88" r="44" fill="#C9A84C" opacity="0.95"/>
-  <path d="M66 190c0-34 28-62 62-62s62 28 62 62" fill="none" stroke="#C9A84C" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="120" cy="88" r="50" fill="#C9A84C" opacity="0.95"/>
+  <path d="M70 190c0-40 30-68 50-68s50 28 50 68" fill="#C9A84C" opacity="0.18"/>
+  <path d="M85 112c0-19 15-34 34-34s34 15 34 34" fill="#0B1C2C"/>
+  <path d="M90 145c0-18 15-33 33-33s33 15 33 33" fill="#0B1C2C"/>
+  <circle cx="98" cy="105" r="6" fill="#0B1C2C"/>
+  <circle cx="142" cy="105" r="6" fill="#0B1C2C"/>
+  <path d="M98 128c6 4 18 4 24 0" stroke="#0B1C2C" stroke-width="4" stroke-linecap="round" fill="none"/>
 </svg>
