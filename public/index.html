@@ -77,38 +77,55 @@
 	}
 	.hero::before {
 		content: '';
-		position: absolute; top: -200px; right: -200px;
-		width: 600px; height: 600px;
+		position: absolute; top: -180px; right: -240px;
+		width: 520px; height: 520px;
 		border-radius: 50%;
-		background: radial-gradient(circle at 30% 30%, rgba(201,168,76,0.06), transparent 30%);
+		background: radial-gradient(circle at 30% 30%, rgba(201,168,76,0.08), transparent 35%);
 	}
 	.hero::after {
 		content: '';
-		position: absolute; bottom: -150px; right: 100px;
-		width: 400px; height: 400px;
+		position: absolute; bottom: -120px; right: 60px;
+		width: 320px; height: 320px;
 		border-radius: 50%;
-		background: radial-gradient(circle at 70% 70%, rgba(201,168,76,0.04), transparent 30%);
+		background: radial-gradient(circle at 70% 70%, rgba(201,168,76,0.05), transparent 35%);
 	}
 	.hero-content { max-width: 680px; position: relative; z-index: 2; }
+	.hero-tagline {
+		font-size: 1rem;
+		color: rgba(255,255,255,0.75);
+		letter-spacing: 0.06em;
+		margin-bottom: 1rem;
+	}
+	.hero-highlight {
+		color: var(--gold);
+		font-weight: 700;
+	}
 	.hero-visual {
 		background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-		border-radius: 8px;
-		padding: 2.2rem;
+		border-radius: 20px;
+		padding: 2rem;
 		color: var(--white);
-		box-shadow: 0 18px 48px rgba(2,12,20,0.35);
+		box-shadow: 0 24px 70px rgba(2,12,20,0.36);
 		position: relative; z-index: 3;
 		display: flex; flex-direction: column; align-items: center; gap: 1rem;
 	}
 	.profile-photo {
-		width: 160px; height: 160px; border-radius: 50%;
+		width: 172px; height: 172px; border-radius: 50%;
 		background: linear-gradient(135deg,#C9A84C33, #E8C97A22);
-		border: 3px solid rgba(255,255,255,0.06);
-		display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:48px;color:var(--gold);
+		border: 3px solid rgba(255,255,255,0.08);
+		display:flex;align-items:center;justify-content:center;
+		overflow: hidden;
 	}
-	.profile-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--white); }
-	.profile-role { color: rgba(255,255,255,0.9); font-size: 0.82rem; letter-spacing:0.08em; text-transform:uppercase; }
-	.profile-links { display:flex; gap:0.6rem; margin-top:0.6rem; }
-	.profile-links a { text-decoration:none; color:var(--white); background: rgba(255,255,255,0.04); padding:0.45rem 0.8rem; border-radius:4px; font-weight:600; font-size:0.82rem; }
+	.profile-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.profile-name { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--white); line-height: 1.15; }
+	.profile-role { color: rgba(255,255,255,0.9); font-size: 0.85rem; letter-spacing:0.08em; text-transform:uppercase; }
+	.profile-links { display:flex; gap:0.6rem; margin-top:0.8rem; flex-wrap: wrap; justify-content: center; }
+	.profile-links a { text-decoration:none; color:var(--white); background: rgba(255,255,255,0.07); padding:0.55rem 1rem; border-radius:6px; font-weight:600; font-size:0.82rem; transition: transform 0.2s, background 0.2s; }
+	.profile-links a:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
 	.scroll-indicator { position:absolute; left:50%; transform:translateX(-50%); bottom:18px; width:28px; height:48px; border-radius:14px; border:2px solid rgba(255,255,255,0.18); display:flex; align-items:flex-start; justify-content:center; padding:6px; }
 	.scroll-indicator span { width:6px; height:6px; background: rgba(255,255,255,0.7); border-radius:50%; display:block; animation: scroll 1.6s infinite; }
 	@keyframes scroll { 0%{ transform: translateY(0);}50%{ transform: translateY(12px);}100%{ transform: translateY(0);} }
@@ -313,14 +330,21 @@
 
 	/* PROJECTS */
 	#projects { background: var(--white); }
-	.project-card {
+	.project-grid {
+		display: grid;
+		gap: 1.7rem;
 		max-width: 1100px;
+	}
+	.project-card {
 		background: var(--navy);
-		border-radius: 4px;
+		border-radius: 20px;
 		overflow: hidden;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		box-shadow: 0 24px 60px rgba(2,12,20,0.18);
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
 	}
+	.project-card:hover { transform: translateY(-6px); box-shadow: 0 32px 80px rgba(2,12,20,0.25); }
 	.project-info { padding: 3.5rem; }
 	.project-tag {
 		display: inline-block;
@@ -334,6 +358,28 @@
 		border-radius: 2px;
 		margin-bottom: 1.5rem;
 	}
+	.project-visual { background: var(--navy-light); display: flex; align-items: center; justify-content: center; padding: 3rem; position: relative; overflow: hidden; }
+	.project-visual::before {
+		content: '';
+		position: absolute; inset: 0;
+		background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px);
+	}
+	.project-visual .tile {
+		position: relative; z-index: 1;
+		width: 100%; height: 100%; border-radius: 18px;
+		background: linear-gradient(135deg, rgba(11,28,44,0.85), rgba(18,35,55,0.95));
+		display:flex;align-items:center;justify-content:center;
+	}
+	.project-visual-icon {
+		width: 100px; height: 100px;
+		border-radius: 24px;
+		background: rgba(201,168,76,0.16);
+		display: flex; align-items: center; justify-content: center;
+		font-size: 3rem;
+		position: relative; z-index:1;
+	}
+	.project-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: gap 0.2s; }
+	.project-link:hover { gap: 0.8rem; }
 	.project-info h3 {
 		font-family: 'DM Serif Display', serif;
 		font-size: 2rem;
@@ -397,31 +443,86 @@
 	}
 
 	/* CONTACT */
-	#contact { background: var(--navy); text-align: center; }
+	#contact { background: var(--navy); }
 	#contact .section-label { color: var(--gold); }
 	#contact .section-title { color: var(--white); }
 	#contact p {
 		font-size: 1.05rem;
-		color: rgba(255,255,255,0.6);
-		max-width: 480px;
-		margin: 0 auto 2.5rem;
+		color: rgba(255,255,255,0.7);
+		max-width: 640px;
+		margin: 0 auto 2rem;
 		line-height: 1.8;
 	}
-	.contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+	.contact-copy {
+		padding: 2.5rem 3rem;
+		background: rgba(255,255,255,0.03);
+		border-radius: 20px;
+		border: 1px solid rgba(255,255,255,0.08);
+	}
+	.contact-copy h3 { color: var(--white); margin-bottom: 1rem; }
+	.contact-copy p { margin-bottom: 1rem; }
+	.contact-form {
+		display: grid;
+		gap: 1rem;
+		padding: 2.5rem 3rem;
+		background: rgba(255,255,255,0.04);
+		border-radius: 20px;
+		border: 1px solid rgba(255,255,255,0.08);
+	}
+	.contact-input,
+	.contact-textarea {
+		width: 100%;
+		padding: 1rem 1.1rem;
+		border-radius: 14px;
+		border: 1px solid rgba(255,255,255,0.15);
+		background: rgba(255,255,255,0.06);
+		color: var(--white);
+		font-size: 0.95rem;
+		outline: none;
+	}
+	.contact-input::placeholder,
+	.contact-textarea::placeholder { color: rgba(255,255,255,0.55); }
+	.contact-textarea { min-height: 155px; resize: vertical; }
+	.contact-form button {
+		padding: 1rem 1.4rem;
+		border-radius: 999px;
+		border: none;
+		background: var(--gold);
+		color: var(--navy);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background 0.2s, transform 0.2s;
+	}
+	.contact-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+	.contact-form .form-status {
+		color: rgba(255,255,255,0.85);
+		font-size: 0.95rem;
+		min-height: 1.2rem;
+	}
+	.contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 	.contact-link {
 		display: inline-flex; align-items: center; gap: 0.5rem;
 		padding: 0.9rem 1.75rem;
 		border: 1px solid rgba(255,255,255,0.2);
-		color: rgba(255,255,255,0.8);
+		color: rgba(255,255,255,0.9);
 		text-decoration: none;
 		font-size: 0.875rem;
 		font-weight: 500;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		border-radius: 2px;
-		transition: border-color 0.2s, color 0.2s;
+		transition: border-color 0.2s, color 0.2s, transform 0.2s;
 	}
-	.contact-link:hover { border-color: var(--gold); color: var(--gold); }
+	.contact-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
 	.contact-link.primary {
 		background: var(--gold);
 		border-color: var(--gold);
@@ -441,12 +542,18 @@
 	}
 
 	/* RESPONSIVE */
+	@media (max-width: 992px) {
+		.hero { grid-template-columns: 1fr; padding: 0 4%; }
+		.hero-visual { margin: 0 auto; }
+		.project-card { grid-template-columns: 1fr; }
+	}
 	@media (max-width: 768px) {
 		.about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-		.project-card { grid-template-columns: 1fr; }
-		.project-visual { display: none; }
+		.contact-grid { grid-template-columns: 1fr; }
 		.nav-links { gap: 1.25rem; }
 		.about-stat-row { gap: 1.5rem; }
+		.hero { padding: 0 2rem; }
+		section { padding: 4.5rem 2rem; }
 	}
 
 	/* SCROLL ANIMATIONS */
@@ -472,6 +579,7 @@
 	<div class="hero-content">
 		<div class="hero-eyebrow">Full Stack Software Engineer</div>
 		<h1>Ernest<br/><em>Anyona.</em></h1>
+		<p class="hero-tagline">I build <span class="hero-highlight" id="hero-dynamic">beautiful interfaces</span> for modern teams.</p>
 		<p class="hero-desc">
 			Software engineer, passionate about building robust, scalable web applications from front to back. Turning ideas into digital reality with clean code and thoughtful design.
 		</p>
@@ -481,7 +589,7 @@
 		</div>
 	</div>
 	<div class="hero-visual">
-		<div class="profile-photo">EA</div>
+		<div class="profile-photo"><img src="/profile.svg" alt="Profile image placeholder" /></div>
 		<div class="profile-name">Ernest Anyona</div>
 		<div class="profile-role">Full Stack Engineer</div>
 		<div class="profile-links">
@@ -595,26 +703,51 @@
 	<h2 class="section-title reveal">Projects</h2>
 	<div class="section-divider reveal"></div>
 
-	<div class="project-card reveal">
-		<div class="project-info">
-			<div class="project-tag">Civic Tech · Full Stack</div>
-			<h3>Urban Infrastructure Issue Reporting Platform</h3>
-			<p>
-				A full stack platform empowering citizens to report urban infrastructure problems — potholes, broken streetlights, water leaks — directly to local authorities. Features real-time status tracking, geolocation tagging, and an admin dashboard for issue management and resolution workflows.
-			</p>
-			<div class="project-tech">
-				<span>React</span>
-				<span>Django</span>
-				<span>Python</span>
-				<span>Node.js</span>
-				<span>REST API</span>
-				<span>JavaScript</span>
+	<div class="project-grid reveal">
+		<article class="project-card">
+			<div class="project-visual">
+				<div class="project-visual tile">
+					<div class="project-visual-icon">🏙️</div>
+				</div>
 			</div>
-			<a href="#contact" class="project-link">Request Demo →</a>
-		</div>
-		<div class="project-visual">
-			<div class="project-visual-icon">🏙️</div>
-		</div>
+			<div class="project-info">
+				<div class="project-tag">Civic Tech · Full Stack</div>
+				<h3>Urban Infrastructure Reporting</h3>
+				<p>Empowering communities to log city issues with location-aware reporting, status updates, and admin case management.</p>
+				<div class="project-tech"><span>React</span><span>Django</span><span>Python</span><span>REST API</span><span>Map APIs</span></div>
+				<a href="#contact" class="project-link">Request Demo →</a>
+			</div>
+		</article>
+
+		<article class="project-card">
+			<div class="project-visual">
+				<div class="project-visual tile">
+					<div class="project-visual-icon">💼</div>
+				</div>
+			</div>
+			<div class="project-info">
+				<div class="project-tag">Productivity · SaaS</div>
+				<h3>Team Workflow Dashboard</h3>
+				<p>Streamlines team planning with visual sprint boards, task tracking, and collaboration tools built for fast iteration.</p>
+				<div class="project-tech"><span>JavaScript</span><span>React</span><span>Node.js</span><span>API Design</span></div>
+				<a href="#contact" class="project-link">See Use Cases →</a>
+			</div>
+		</article>
+
+		<article class="project-card">
+			<div class="project-visual">
+				<div class="project-visual tile">
+					<div class="project-visual-icon">🌐</div>
+				</div>
+			</div>
+			<div class="project-info">
+				<div class="project-tag">Portfolio · Personal</div>
+				<h3>Branded Portfolio Experience</h3>
+				<p>A polished, responsive portfolio with strong visual hierarchy, clear CTAs, and an elegant experience for recruiters.</p>
+				<div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Firebase</span></div>
+				<a href="#contact" class="project-link">View the Portfolio →</a>
+			</div>
+		</article>
 	</div>
 </section>
 
@@ -624,12 +757,26 @@
 	<h2 class="section-title" style="color: var(--white);">Let's work together</h2>
 	<div class="section-divider" style="margin: 1rem auto 1.5rem;"></div>
 	<p>
-		I'm currently open to full-time roles, freelance projects, and exciting collaborations. If you have a project in mind or just want to connect, my inbox is always open.
+		I'm currently open to full-time roles, freelance projects, and exciting collaborations. If you have a project in mind or just want to connect, send a quick message and I’ll reply soon.
 	</p>
-	<div class="contact-links">
-		<a href="mailto:ernest.anyona@email.com" class="contact-link primary">✉ Send an Email</a>
-		<a href="https://github.com/Anyoner2" target="_blank" class="contact-link">⌥ GitHub</a>
-		<a href="https://www.linkedin.com/in/ernest-anyona-4398b7267/" target="_blank" class="contact-link">in LinkedIn</a>
+	<div class="contact-grid">
+		<div class="contact-copy">
+			<h3>Ready to start something great?</h3>
+			<p>Reach out directly with your idea, timeline, or collaboration request. I respond fast and enjoy building modern web experiences that make an impact.</p>
+			<div class="contact-links">
+				<a href="mailto:ernest.anyona@email.com" class="contact-link primary">✉ Email</a>
+				<a href="https://github.com/Anyoner2" target="_blank" class="contact-link">⌥ GitHub</a>
+				<a href="https://www.linkedin.com/in/ernest-anyona-4398b7267/" target="_blank" class="contact-link">in LinkedIn</a>
+			</div>
+		</div>
+		<form class="contact-form" id="contact-form">
+			<input type="text" id="contact-name" class="contact-input" placeholder="Your Name" required />
+			<input type="email" id="contact-email" class="contact-input" placeholder="Your Email" required />
+			<input type="text" id="contact-subject" class="contact-input" placeholder="Subject" required />
+			<textarea id="contact-message" class="contact-textarea" placeholder="Tell me about your project" required></textarea>
+			<div class="form-status" id="form-status"></div>
+			<button type="submit">Send Message</button>
+		</form>
 	</div>
 </section>
 
@@ -644,6 +791,56 @@
 		entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
 	}, { threshold: 0.12 });
 	reveals.forEach(r => observer.observe(r));
+
+	const dynamicWords = ['beautiful interfaces', 'scalable systems', 'impactful experiences', 'clean code'];
+	const dynamicElement = document.getElementById('hero-dynamic');
+	let wordIndex = 0;
+
+	setInterval(() => {
+		wordIndex = (wordIndex + 1) % dynamicWords.length;
+		dynamicElement.classList.remove('hero-highlight');
+		setTimeout(() => {
+			dynamicElement.textContent = dynamicWords[wordIndex];
+			dynamicElement.classList.add('hero-highlight');
+		}, 150);
+	}, 3200);
+
+	const contactForm = document.getElementById('contact-form');
+	const formStatus = document.getElementById('form-status');
+	const CONTACT_API_URL = '/api/contacts/';
+
+	contactForm.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		formStatus.textContent = 'Sending message...';
+		const payload = {
+			name: document.getElementById('contact-name').value.trim(),
+			email: document.getElementById('contact-email').value.trim(),
+			subject: document.getElementById('contact-subject').value.trim(),
+			message: document.getElementById('contact-message').value.trim(),
+		};
+
+		try {
+			const response = await fetch(CONTACT_API_URL, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(payload),
+			});
+
+			if (response.ok) {
+				formStatus.textContent = 'Message sent successfully! I’ll reply soon.';
+				contactForm.reset();
+			} else {
+				const errorText = await response.text();
+				formStatus.textContent = 'Could not send message. Make sure the backend endpoint is available.';
+				console.warn('Contact form error:', errorText);
+			}
+		} catch (error) {
+			formStatus.textContent = 'Network error — check the backend URL or try again later.';
+			console.error(error);
+		}
+	});
 </script>
 
 </body>
