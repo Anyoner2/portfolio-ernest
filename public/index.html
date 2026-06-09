@@ -254,10 +254,24 @@
 		position: relative;
 		overflow: hidden;
 	}
+
+	.about-bg-svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: var(--gold);
+		opacity: 0.12;
+		pointer-events: none;
+		z-index: 1;
+	}
+
 	.about-card::before {
 		content: '';
 		position: absolute; top: 0; left: 0; right: 0; height: 3px;
 		background: var(--gold);
+		z-index: 3;
 	}
 	.about-card .initials {
 		width: 72px; height: 72px; border-radius: 50%;
@@ -268,12 +282,16 @@
 		font-size: 1.5rem;
 		color: var(--gold);
 		margin-bottom: 1.5rem;
+		position: relative;
+		z-index: 2;
 	}
 	.about-card h3 {
 		font-family: 'DM Serif Display', serif;
 		font-size: 1.5rem;
 		color: var(--white);
 		margin-bottom: 0.4rem;
+		position: relative;
+		z-index: 2;
 	}
 	.about-card .role {
 		font-size: 0.85rem;
@@ -281,12 +299,16 @@
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		margin-bottom: 1.5rem;
+		position: relative;
+		z-index: 2;
 	}
 	.about-card .detail {
 		display: flex; align-items: center; gap: 0.75rem;
 		font-size: 0.9rem;
 		color: rgba(255,255,255,0.6);
 		margin-bottom: 0.75rem;
+		position: relative;
+		z-index: 2;
 	}
 	.about-card .detail span { color: rgba(255,255,255,0.85); }
 
@@ -331,6 +353,58 @@
 		border-radius: 2px;
 		letter-spacing: 0.03em;
 	}
+
+	/* CERTIFICATIONS */
+	#certifications { background: var(--cream); }
+	.cert-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+		max-width: 1100px;
+	}
+	.cert-card {
+		background: var(--white);
+		border-radius: 20px;
+		padding: 2rem;
+		box-shadow: 0 18px 40px rgba(11,28,44,0.08);
+		border-top: 3px solid var(--gold);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	.cert-card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(11,28,44,0.12); }
+	.cert-card-icon {
+		width: 56px; height: 56px;
+		border-radius: 16px;
+		display: flex; align-items: center; justify-content: center;
+		background: rgba(201,168,76,0.12);
+		font-size: 1.75rem;
+		margin-bottom: 1.25rem;
+	}
+	.cert-card h4 {
+		font-size: 1.25rem;
+		margin-bottom: 0.8rem;
+		color: var(--navy);
+	}
+	.cert-card p {
+		font-size: 0.95rem;
+		color: var(--text-muted);
+		line-height: 1.85;
+		margin-bottom: 1.4rem;
+	}
+	.cert-link,
+	.cert-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--gold);
+		transition: color 0.2s, transform 0.2s;
+	}
+	.cert-link:hover,
+	.cert-cta:hover { color: var(--navy); transform: translateY(-1px); }
 
 	/* PROJECTS */
 	#projects { background: var(--white); }
@@ -573,6 +647,7 @@
 	<ul class="nav-links">
 		<li><a href="#about">About</a></li>
 		<li><a href="#skills">Skills</a></li>
+		<li><a href="#certifications">Certifications</a></li>
 		<li><a href="#projects">Projects</a></li>
 		<li><a href="#contact">Contact</a></li>
 	</ul>
@@ -633,6 +708,27 @@
 			</div>
 		</div>
 		<div class="about-card">
+			<svg class="about-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true">
+				<defs>
+					<pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+						<path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="1" opacity="0.1"/>
+					</pattern>
+				</defs>
+				<rect width="800" height="600" fill="url(#grid)"/>
+				<circle cx="100" cy="80" r="45" fill="currentColor" opacity="0.08"/>
+				<circle cx="700" cy="150" r="60" fill="currentColor" opacity="0.06"/>
+				<circle cx="150" cy="500" r="55" fill="currentColor" opacity="0.07"/>
+				<line x1="0" y1="150" x2="800" y2="150" stroke="currentColor" stroke-width="1" opacity="0.05"/>
+				<line x1="0" y1="300" x2="800" y2="300" stroke="currentColor" stroke-width="1" opacity="0.05"/>
+				<line x1="0" y1="450" x2="800" y2="450" stroke="currentColor" stroke-width="1" opacity="0.05"/>
+				<rect x="50" y="250" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2" opacity="0.08" transform="rotate(22 110 310)"/>
+				<rect x="650" y="320" width="100" height="100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.06" transform="rotate(-18 700 370)"/>
+				<circle cx="200" cy="200" r="4" fill="currentColor" opacity="0.12"/>
+				<circle cx="350" cy="280" r="4" fill="currentColor" opacity="0.12"/>
+				<circle cx="500" cy="350" r="4" fill="currentColor" opacity="0.12"/>
+				<line x1="200" y1="200" x2="350" y2="280" stroke="currentColor" stroke-width="1" opacity="0.04"/>
+				<line x1="350" y1="280" x2="500" y2="350" stroke="currentColor" stroke-width="1" opacity="0.04"/>
+			</svg>
 			<div class="initials">EA</div>
 			<h3>Ernest Anyona</h3>
 			<div class="role">Full Stack Engineer</div>
@@ -701,8 +797,22 @@
 	</div>
 </section>
 
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+	<p class="section-label reveal">Certifications</p>
+	<h2 class="section-title reveal">Verified skills & professional credentials</h2>
+	<div class="section-divider reveal"></div>
+	<div class="cert-grid reveal">
+		<article class="cert-card">
+			<div class="cert-card-icon"></div>
+			<h4>Download My CV</h4>
+			<p>Download my CV.</p>
+			<a class="cert-cta btn-primary" href="/resume.pdf" target="_blank">Download CV</a>
+		</article>
+	</div>
+</section>
+
 <!-- PROJECTS -->
-<section id="projects">
 	<p class="section-label reveal">Featured Work</p>
 	<h2 class="section-title reveal">Projects</h2>
 	<div class="section-divider reveal"></div>
@@ -771,6 +881,7 @@
 				<a href="mailto:ernest.anyona@email.com" class="contact-link primary">✉ Email</a>
 				<a href="https://github.com/Anyoner2" target="_blank" class="contact-link">⌥ GitHub</a>
 				<a href="https://www.linkedin.com/in/ernest-anyona-4398b7267/" target="_blank" class="contact-link">in LinkedIn</a>
+				<a href="/resume.pdf" target="_blank" class="contact-link">📄 Download CV</a>
 			</div>
 		</div>
 		<form class="contact-form" id="contact-form">
