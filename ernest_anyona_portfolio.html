@@ -242,16 +242,17 @@
     position: relative;
     overflow: hidden;
   }
-  .about-bg-svg {
+  .about-photo {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    color: var(--gold);
-    opacity: 0.35;
+    object-fit: cover;
+    object-position: center;
+    filter: none;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
+    opacity: 1;
   }
   .about-card .initials,
   .about-card h3,
@@ -556,27 +557,7 @@
       </div>
     </div>
       <div class="about-card">
-        <svg class="about-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-            </pattern>
-          </defs>
-          <rect width="800" height="600" fill="url(#grid)"/>
-          <circle cx="100" cy="80" r="45" fill="currentColor" opacity="0.15"/>
-          <circle cx="700" cy="150" r="60" fill="currentColor" opacity="0.12"/>
-          <circle cx="150" cy="500" r="55" fill="currentColor" opacity="0.14"/>
-          <line x1="0" y1="150" x2="800" y2="150" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-          <line x1="0" y1="300" x2="800" y2="300" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-          <line x1="0" y1="450" x2="800" y2="450" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-          <rect x="50" y="250" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2" opacity="0.18" transform="rotate(22 110 310)"/>
-          <rect x="650" y="320" width="100" height="100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15" transform="rotate(-18 700 370)"/>
-          <circle cx="200" cy="200" r="4" fill="currentColor" opacity="0.25"/>
-          <circle cx="350" cy="280" r="4" fill="currentColor" opacity="0.25"/>
-          <circle cx="500" cy="350" r="4" fill="currentColor" opacity="0.25"/>
-          <line x1="200" y1="200" x2="350" y2="280" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-          <line x1="350" y1="280" x2="500" y2="350" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-        </svg>
+        <img class="about-photo" src="/images/about-coder.png" alt="Person coding" />
         <div class="initials">EA</div>
         <h3>Ernest Anyona</h3>
         <div class="role">Full Stack Engineer</div>

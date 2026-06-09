@@ -255,16 +255,17 @@
 		overflow: hidden;
 	}
 
-	.about-bg-svg {
+	.about-photo {
 		position: absolute;
-		top: 0;
-		left: 0;
+		inset: 0;
 		width: 100%;
 		height: 100%;
-		color: var(--gold);
-		opacity: 0.35;
+		object-fit: cover;
+		object-position: center;
+		filter: none;
 		pointer-events: none;
-		z-index: 1;
+		z-index: 0;
+		opacity: 1;
 	}
 
 	.about-card::before {
@@ -668,37 +669,7 @@
 		</div>
 	</div>
 	<div class="hero-visual">
-		<div class="profile-photo"><img src="/profile.svg" alt="Profile image placeholder" /></div>
-		<div class="profile-name">Ernest Anyona</div>
-		<div class="profile-role">Full Stack Engineer</div>
-		<div class="profile-links">
-			<a href="https://github.com/Anyoner2" target="_blank">GitHub</a>
-			<a href="https://www.linkedin.com/in/ernest-anyona-4398b7267/" target="_blank">LinkedIn</a>
-		</div>
-	</div>
-	<div class="scroll-indicator"><span></span></div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-	<div class="about-grid reveal">
-		<div class="about-text">
-			<p class="section-label">About Me</p>
-			<h2 class="section-title">Building the web, <em style="font-style:italic; color: var(--navy);">end to end.</em></h2>
-			<div class="section-divider"></div>
-			<p>
-				I'm Ernest Anyona, a freshly graduated Full Stack Software Engineer from Murang'a University of Technology. My passion lies in crafting seamless digital experiences — from pixel-perfect interfaces to robust server-side architecture.
-			</p>
-			<p>
-				I thrive at the intersection of design and engineering, delivering products that are both performant and intuitive. Whether it's a sleek React frontend or a powerful Django REST API, I bring ideas to life with precision and care.
-			</p>
-			<div class="about-stat-row">
-				<div class="about-stat">
-					<div class="number">2+</div>
-					<div class="label">Years Coding</div>
-				</div>
-				<div class="about-stat">
-					<div class="number">5+</div>
+			<img class="about-photo" src="/images/about-coder.png" alt="Person coding" />
 					<div class="label">Technologies</div>
 				</div>
 				<div class="about-stat">
@@ -708,26 +679,39 @@
 			</div>
 		</div>
 		<div class="about-card">
-			<svg class="about-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true">
+			<svg class="about-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="none" aria-hidden="true">
 				<defs>
-					<pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-						<path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-					</pattern>
+					<radialGradient id="bgGlow" cx="0.2" cy="0.2" r="0.85">
+						<stop offset="0%" stop-color="currentColor" stop-opacity="0.24"/>
+						<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+					</radialGradient>
 				</defs>
-				<rect width="800" height="600" fill="url(#grid)"/>
-				<circle cx="100" cy="80" r="45" fill="currentColor" opacity="0.15"/>
-				<circle cx="700" cy="150" r="60" fill="currentColor" opacity="0.12"/>
-				<circle cx="150" cy="500" r="55" fill="currentColor" opacity="0.14"/>
-				<line x1="0" y1="150" x2="800" y2="150" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-				<line x1="0" y1="300" x2="800" y2="300" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-				<line x1="0" y1="450" x2="800" y2="450" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-				<rect x="50" y="250" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2" opacity="0.18" transform="rotate(22 110 310)"/>
-				<rect x="650" y="320" width="100" height="100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15" transform="rotate(-18 700 370)"/>
-				<circle cx="200" cy="200" r="4" fill="currentColor" opacity="0.25"/>
-				<circle cx="350" cy="280" r="4" fill="currentColor" opacity="0.25"/>
-				<circle cx="500" cy="350" r="4" fill="currentColor" opacity="0.25"/>
-				<line x1="200" y1="200" x2="350" y2="280" stroke="currentColor" stroke-width="1" opacity="0.15"/>
-				<line x1="350" y1="280" x2="500" y2="350" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+				<rect width="900" height="600" fill="url(#bgGlow)"/>
+				<rect x="150" y="320" width="600" height="200" rx="28" fill="currentColor" opacity="0.12"/>
+				<rect x="220" y="340" width="460" height="160" rx="18" fill="currentColor" opacity="0.22"/>
+				<rect x="260" y="380" width="360" height="18" rx="9" fill="currentColor" opacity="0.45"/>
+				<rect x="260" y="410" width="310" height="14" rx="7" fill="currentColor" opacity="0.35"/>
+				<rect x="260" y="438" width="260" height="12" rx="6" fill="currentColor" opacity="0.28"/>
+				<rect x="260" y="462" width="340" height="10" rx="5" fill="currentColor" opacity="0.24"/>
+				<rect x="490" y="355" width="120" height="90" rx="16" fill="currentColor" opacity="0.16"/>
+				<circle cx="520" cy="200" r="46" fill="currentColor" opacity="0.4"/>
+				<path d="M470 260 C462 240, 490 220, 520 220 C550 220, 578 240, 570 260 L570 320 C570 345, 450 345, 450 320 Z" fill="currentColor" opacity="0.36"/>
+				<path d="M470 320 C470 335, 540 335, 540 320 L560 420 C560 430, 450 430, 450 420 Z" fill="currentColor" opacity="0.30"/>
+				<path d="M540 320 L720 320 L720 340 L540 340 Z" fill="currentColor" opacity="0.32"/>
+				<rect x="520" y="340" width="240" height="14" rx="7" fill="currentColor" opacity="0.30"/>
+				<rect x="520" y="364" width="180" height="10" rx="5" fill="currentColor" opacity="0.25"/>
+				<rect x="530" y="391" width="200" height="12" rx="6" fill="currentColor" opacity="0.22"/>
+				<rect x="190" y="152" width="170" height="98" rx="22" fill="currentColor" opacity="0.1"/>
+				<rect x="210" y="175" width="120" height="14" rx="7" fill="currentColor" opacity="0.4"/>
+				<rect x="210" y="200" width="90" height="10" rx="5" fill="currentColor" opacity="0.3"/>
+				<rect x="210" y="225" width="140" height="10" rx="5" fill="currentColor" opacity="0.3"/>
+				<rect x="670" y="110" width="170" height="100" rx="20" fill="currentColor" opacity="0.12"/>
+				<rect x="690" y="135" width="110" height="12" rx="6" fill="currentColor" opacity="0.4"/>
+				<rect x="690" y="160" width="140" height="10" rx="5" fill="currentColor" opacity="0.3"/>
+				<rect x="690" y="185" width="90" height="10" rx="5" fill="currentColor" opacity="0.3"/>
+				<circle cx="135" cy="520" r="7" fill="currentColor" opacity="0.34"/>
+				<line x1="160" y1="520" x2="250" y2="520" stroke="currentColor" stroke-width="2" opacity="0.22"/>
+				<line x1="160" y1="540" x2="210" y2="540" stroke="currentColor" stroke-width="2" opacity="0.18"/>
 			</svg>
 			<div class="initials">EA</div>
 			<h3>Ernest Anyona</h3>
