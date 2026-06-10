@@ -3,9 +3,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ContactMessageView(APIView):
     def post(self, request):
         serializer = ContactMessageSerializer(data=request.data)
@@ -18,10 +21,14 @@ class ContactMessageView(APIView):
                     message=f"From: {serializer.data['name']} <{serializer.data['email']}>\n\n{serializer.data['message']}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
-                    fail_silently=True,
+                    fail_silently=False,
+                    headers={'Reply-To': serializer.data['email']},
                 )
-            except Exception:
-                pass  # Don't fail the request if email fails
+            except Exception as exc:
+                return Response(
+                    {'message': 'Message saved, but email delivery failed.', 'error': str(exc)},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
             return Response({'message': 'Message sent successfully!'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

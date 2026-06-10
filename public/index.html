@@ -262,10 +262,19 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
-		filter: none;
+		filter: brightness(0.7) contrast(1.05);
 		pointer-events: none;
 		z-index: 0;
 		opacity: 1;
+	}
+
+	.about-card::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(7, 18, 32, 0.5);
+		z-index: 1;
+		pointer-events: none;
 	}
 
 	.about-card::before {
@@ -898,9 +907,16 @@
 				formStatus.textContent = 'Message sent successfully! I’ll reply soon.';
 				contactForm.reset();
 			} else {
-				const errorText = await response.text();
-				formStatus.textContent = 'Could not send message. Make sure the backend endpoint is available.';
-				console.warn('Contact form error:', errorText);
+				let errorMessage = 'Could not send message. Make sure the backend endpoint is available.';
+				try {
+					const json = await response.json();
+					if (json.error) errorMessage = json.error;
+					else if (json.message) errorMessage = json.message;
+				} catch (err) {
+					console.warn('Contact form response parse error:', err);
+				}
+				formStatus.textContent = errorMessage;
+				console.warn('Contact form error:', response.status, errorMessage);
 			}
 		} catch (error) {
 			formStatus.textContent = 'Network error — check the backend URL or try again later.';
