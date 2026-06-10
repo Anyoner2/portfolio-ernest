@@ -417,7 +417,27 @@
 	.cert-cta:hover { color: var(--navy); transform: translateY(-1px); }
 
 	/* PROJECTS */
-	#projects { background: var(--white); }
+	#projects {
+		background: url('images/about-coder.png') center/cover no-repeat;
+		position: relative;
+		overflow: hidden;
+	}
+	#projects::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(1,12,28,0.72);
+	}
+	#projects > * {
+		position: relative;
+		z-index: 1;
+	}
+	#projects .section-title,
+	#projects p,
+	#projects .project-tag,
+	#projects .project-info p {
+		color: rgba(255,255,255,0.92);
+	}
 	.project-grid {
 		display: grid;
 		gap: 1.7rem;
