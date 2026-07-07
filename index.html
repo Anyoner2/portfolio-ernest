@@ -151,7 +151,14 @@
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
   /* SECTIONS */
-  section { padding: 6rem 5%; }
+  section {
+    padding: 6rem 5%;
+    background: rgba(11,28,44,0.24);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 1200px;
+  }
   .section-label {
     font-size: 0.75rem;
     font-weight: 600;
@@ -163,7 +170,7 @@
   .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--navy);
+    color: var(--white);
     line-height: 1.15;
     margin-bottom: 1rem;
   }
@@ -175,7 +182,7 @@
   }
 
   /* ABOUT */
-  #about { background: var(--white); }
+  #about { background: transparent; }
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -252,7 +259,7 @@
   .about-card .detail span { color: rgba(255,255,255,0.85); }
 
   /* SKILLS */
-  #skills { background: var(--cream); }
+  #skills { background: transparent; }
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -294,7 +301,7 @@
   }
 
   /* PROJECTS */
-  #projects { background: var(--white); }
+  #projects { background: transparent; }
   .project-card {
     max-width: 1100px;
     background: var(--navy);
