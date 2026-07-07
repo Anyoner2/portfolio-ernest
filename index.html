@@ -25,7 +25,10 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
+    background: radial-gradient(circle at top left, rgba(201,168,76,0.12), transparent 28%),
+                radial-gradient(circle at 85% 8%, rgba(255,255,255,0.08), transparent 16%),
+                var(--cream);
+    background-attachment: fixed;
     color: var(--text-main);
     overflow-x: hidden;
   }
@@ -59,7 +62,11 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: var(--navy);
+    background: linear-gradient(135deg, rgba(11,28,44,0.96) 0%, rgba(18,35,55,0.98) 48%, rgba(26,58,85,1) 100%);
+    background-image: url('/bg-about.svg');
+    background-position: top right;
+    background-size: 540px;
+    background-repeat: no-repeat;
     display: flex; align-items: center;
     padding: 0 5%;
     position: relative;
@@ -67,17 +74,18 @@
   }
   .hero::before {
     content: '';
-    position: absolute; top: -200px; right: -200px;
-    width: 600px; height: 600px;
+    position: absolute; top: -220px; right: -240px;
+    width: 620px; height: 620px;
     border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.12);
+    background: radial-gradient(circle, rgba(201,168,76,0.16), transparent 55%);
+    filter: blur(1px);
   }
   .hero::after {
     content: '';
-    position: absolute; bottom: -150px; right: 100px;
-    width: 400px; height: 400px;
+    position: absolute; bottom: -160px; right: 100px;
+    width: 420px; height: 420px;
     border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.07);
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 52%);
   }
   .hero-content { max-width: 680px; position: relative; z-index: 1; }
   .hero-eyebrow {
@@ -200,6 +208,10 @@
     padding: 3rem 2.5rem;
     position: relative;
     overflow: hidden;
+    background-image: url('/silhouette-coder.svg');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 220px;
   }
   .about-card::before {
     content: '';
