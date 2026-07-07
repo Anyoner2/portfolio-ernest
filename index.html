@@ -25,12 +25,13 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: linear-gradient(rgba(11,28,44,0.82), rgba(11,28,44,0.82)),
+    background: linear-gradient(rgba(11,28,44,0.36), rgba(11,28,44,0.36)),
                 url('/images/about-coder.png');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-blend-mode: overlay;
     color: var(--text-main);
     overflow-x: hidden;
   }
@@ -64,11 +65,12 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, rgba(11,28,44,0.94) 0%, rgba(18,35,55,0.95) 48%, rgba(26,58,85,1) 100%),
+    background: linear-gradient(135deg, rgba(11,28,44,0.42) 0%, rgba(18,35,55,0.44) 48%, rgba(26,58,85,0.46) 100%),
                 url('/images/about-coder.png');
     background-position: top right, center;
     background-size: 520px, cover;
     background-repeat: no-repeat, no-repeat;
+    background-blend-mode: overlay, normal;
     display: flex; align-items: center;
     padding: 0 5%;
     position: relative;
@@ -153,9 +155,9 @@
   /* SECTIONS */
   section {
     padding: 6rem 5%;
-    background: rgba(3, 12, 28, 0.72);
+    background: rgba(3, 12, 28, 0.52);
     border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(18px);
     border-radius: 24px;
     margin: 2rem auto;
